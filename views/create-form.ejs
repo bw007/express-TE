@@ -1,0 +1,14 @@
+<%- include('./includes/head.ejs') %>
+
+<div class="todo__body">
+  <form action="/task" method="post" class="todo__form todo-form">
+    <input type="text" name="title" placeholder="Title" class="todo-form__input" required />
+    <textarea name="description" placeholder="Description" class="todo-form__textarea" required></textarea>
+    <div class="todo-form__actions">
+      <button type="submit" class="todo-form__submit">Create</button>
+      <a href="/" class="todo-form__cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+  
+<%- include('./includes/footer.ejs') %>

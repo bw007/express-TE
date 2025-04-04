@@ -1,9 +1,11 @@
-const express = require('express');
+const { Router } = require('express');
+const router = Router();
 
-const router = express.Router();
-
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Home', data: [{ name: 'Laziz', age: 25 }] });
-});
+router.use('/', require('./task/all-tasks'));
+router.use('/task', require('./task/create-task')); 
+router.use('/task/new', require('./task/create-form'));
+router.use('/task/:id/edit', require('./task/edit-task'));
+router.use('/task/:id/update', require('./task/update-task'));
+router.use('/task/:id/delete', require('./task/delete-task'));
 
 module.exports = router;
