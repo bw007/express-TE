@@ -1,18 +1,26 @@
 <%- include('./includes/head.ejs') %>
 
-<div class="todo__body">
-  <div class="todo__item todo-item">
-    <h3 class="todo-item__title">Lorem, ipsum.</h3>
-    <p class="todo-item__description">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-      voluptatibus.
-    </p>
-    <div class="todo-item__actions">
-      <button class="todo-item__action todo-item__action--edit">Edit</button>
-      <button class="todo-item__action todo-item__action--delete">Delete</button>
+  <div class="todo__body">
+    <% for(const task of tasks) {%>
+      <div class="todo__item todo-item">
+        <h3 class="todo-item__title"> <%= task.name %> </h3>
+        <p class="todo-item__description"> <%= task.description %> </p>
+        <div class="todo-item__actions">
+          <a href="/task/<%= task.id %>/edit" class="todo-item__action todo-item__action--edit">Edit</a>
+          <button data-modal="deleteModal" data-id="<%= task.id %>" data-name="<%= task.name %>" class="todo-item__action todo-item__action--delete modal__open">Delete</button>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  <a href="/task/new" class="todo__create-button">+</a>
+  <div class="modal__overlay"></div>
+  <div id="deleteModal" class="modal">
+    <h3 class="modal__title">Delete task</h3>
+    <p class="modal__desc">Delete task</p>
+    <div class="modal__actions">
+      <button type="submit" class="modal__btn modal__btn--danger delete">Delete</button>
+      <button type="button" class="modal__btn modal__btn--close">Cancel</button>
     </div>
   </div>
-</div>
-<a href="/task/new" class="todo__create-button">+</a>
-  
+
 <%- include('./includes/footer.ejs') %>

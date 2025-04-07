@@ -1,31 +1,22 @@
 const { Router } = require('express');
-
 const router = Router();
-
-const fs = require('fs');
-const path = require('path');
 const { MESSAGES } = require('../../utils/messages');
+const createFileHandler = require('../../utils/fileOperations');
 
-const filePath = path.join(__dirname, '../..', 'data/data.json');
+const { readFile, writeFile } = createFileHandler();
 
 router.post('/', (req, res) => {
-  const { title, description } = req.body;
-    
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    let tasks = [];
-    if (!err) tasks = JSON.parse(data);
+  const { name, description } = req.body;
 
-    const newId = tasks.length > 0 ? Math.max(...tasks.map(book => book.id || 0)) + 1 : 1;
-    const newTask = { id: newId, title, description, status: 0 };
+  readFile((tasks) => {
+    const newId = tasks.length > 0 ? Math.max(...tasks.map(task => task.id || 0)) + 1 : 1;
+    const newTask = { id: newId, name, description, status: 0 };
     tasks.push(newTask);
     
-    fs.writeFile(filePath, JSON.stringify(tasks, null, 2), 'utf-8', (err) => {
-      if (err) {
-        return res.status(500).send(MESSAGES.ERROR[500]);
-      }
+    writeFile(tasks, (err) => {
+      if (err) return res.status(500).send(MESSAGES.ERROR[500]);
       res.redirect('/');
     });
-
   });
 
 });

@@ -1,0 +1,20 @@
+<%- include('./includes/head.ejs') %>
+
+<div class="todo__body">
+  <h2 class="todo__title">Update task</h2>
+  <form action="/task/<%= task.id %>/update" method="post" class="todo__form todo-form">
+    <input type="text" name="name" value="<%= task.name %>" placeholder="Name" class="todo-form__input" required />
+    <textarea name="description" placeholder="Description" class="todo-form__textarea" required><%= task.description %></textarea>
+    <select name="status" class="todo-form__select" required>
+      <option value="0" <%= task.status == 0 ? 'selected' : '' %>>In Progress</option>
+      <option value="1" <%= task.status == 1 ? 'selected' : '' %>>Completed</option>
+      <option value="2" <%= task.status == 2 ? 'selected' : '' %>>Pending</option>
+    </select>
+    <div class="todo-form__actions">
+      <button type="submit" class="todo-form__submit">Update</button>
+      <a href="/" class="todo-form__cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+  
+<%- include('./includes/footer.ejs') %>

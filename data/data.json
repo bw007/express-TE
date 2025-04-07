@@ -1,32 +1,26 @@
 [
   {
-    "id": 1,
-    "name": "Vue lessons",
-    "description": "Vue lessons for beginners",
+    "id": 6,
+    "name": "sasa",
+    "description": "sasas",
     "status": 0
   },
   {
-    "id": 2,
-    "name": "React lessons",
-    "description": "React lessons for beginners",
-    "status": 1
+    "id": 7,
+    "name": "sasa",
+    "description": "d",
+    "status": 0
   },
   {
-    "id": 3,
-    "name": "Angular lessons",
-    "description": "Angular lessons for beginners",
-    "status": 2
+    "id": 8,
+    "name": "English",
+    "description": "sasasas",
+    "status": 0
   },
   {
-    "id": 4,
-    "name": "Svelte lessons",
-    "description": "Svelte lessons for beginners",
-    "status": 3
-  },
-  {
-    "id": 5,
-    "title": "ddd",
-    "description": "ddd",
+    "id": 9,
+    "name": "sasa",
+    "description": "sasas",
     "status": 0
   }
 ]

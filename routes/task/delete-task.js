@@ -1,15 +1,30 @@
 const { Router } = require('express');
+const createFileHandler = require('../../utils/fileOperations');
+const MESSAGES = require('../../utils/messages');
+const router = Router({ mergeParams: true });
 
-const router = Router();
+const { readFile, writeFile } = createFileHandler()
 
-const data = require('../../data/data.json');
-const fs = require('fs');
-const path = require('path');
+router.delete('/', (req, res) => {
+  const taskId = req.params.id;
 
-const filePath = path.join(__dirname, '../data/data.json');
+  if (!taskId) {
+    return res.status(400).send(MESSAGES.ERROR[400]);
+  }
 
-router.post('/task/:id/delete', (req, res) => {
-  
+  readFile((tasks = []) => {
+    const taskExists = tasks.some((item) => item.id == taskId);
+    if (!taskExists) {
+      return res.status(404).send(MESSAGES.ERROR[404]);
+    }
+    
+    tasks = tasks.filter(task => task.id != taskId);
+    
+    writeFile(tasks, (err) => {
+      if (err) return res.status(500).send(MESSAGES.ERROR[500]);
+      res.redirect('/');
+    });
+  })
 });
 
 module.exports = router;

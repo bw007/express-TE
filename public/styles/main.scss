@@ -34,7 +34,6 @@ button {
   margin: 0 auto;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   position: relative;
 
   &__header {
@@ -50,11 +49,31 @@ button {
   }
 
   &__body {
+    overflow: auto;
+    height: calc(100vh - 69px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     padding: 15px;
+    padding-bottom: 100px;
+    &::after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 100px;
+      background: rgb(249,249,249);
+      background: linear-gradient(180deg, rgba(249,249,249,1) 0%, rgba(110,110,110,0.5) 100%);
+      content: "";
+      display: block;
+    }
+  }
+
+  &__title {
+    color: #007bff;
   }
 
   &__item {
-    margin-bottom: 15px;
     padding: 15px;
     border-radius: 5px;
     background-color: #f8f9fa;
@@ -95,7 +114,7 @@ button {
 }
 
 .todo-form {
-  &__input {
+  &__input, &__select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -196,6 +215,65 @@ button {
 
     &:active {
       transform: scale(0.98);
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  display: none;
+  max-width: 500px;
+  width: 90%;
+  &__overlay.active, &.active {
+    display: block;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    color: #dc3545;
+  }
+
+  &__actions{
+    margin-top: 15px;
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+  }
+
+  &__btn {
+    padding: 8px 12px;
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+    &--danger {
+      background-color: #dc3545;
+      color: #fff;
+    }
+    &--close {
+      border: 1px solid #dc3545;
     }
   }
 }
