@@ -28,4 +28,4 @@ const createFileHandler = () => {
   return { readFile, writeFile };
 };
 
-module.exports = createFileHandler;;
+module.exports = createFileHandler;

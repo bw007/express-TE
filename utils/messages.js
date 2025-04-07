@@ -13,5 +13,4 @@ const MESSAGES = {
   },
 };
 
-
-module.exports = MESSAGES
+module.exports = MESSAGES;
