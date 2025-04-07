@@ -177,6 +177,7 @@ button {
 }
 
 .todo-item {
+  position: relative;
   &__title {
     font-size: 1.25rem;
     color: #333;
@@ -188,6 +189,17 @@ button {
     color: #555;
   }
 
+  &__status {
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    line-height: normal;
+  }
+
   &__actions {
     display: flex;
     justify-content: right;
@@ -195,9 +207,16 @@ button {
   }
   
   &__action {
-    padding: 8px 12px;
+    padding: 10px 15px;
     width: 70px;
     transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #fff;
+    height: 36px;
+    line-height: normal;
 
     &--edit {
       background-color: #17a2b8;
@@ -272,8 +291,23 @@ button {
       background-color: #dc3545;
       color: #fff;
     }
-    &--close {
+    &--cancel {
       border: 1px solid #dc3545;
     }
   }
+}
+
+.primary {
+  color: #ffffff;
+  background-color: #0056b3;
+}
+
+.success {
+  color: #ffffff;
+  background-color: #218838;
+}
+
+.warning {
+  color: #212529;
+  background-color: #ffc107;
 }
