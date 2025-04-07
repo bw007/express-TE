@@ -7,6 +7,9 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use(express.static('public'));
+app.use('/styles', express.static('public/styles'));
+app.use('/js', express.static('public/js'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
