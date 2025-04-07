@@ -4,7 +4,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --ignore 'data/' index.js"
+  },
+  "nodemonConfig": {
+    "ignore": ["data/*", "public/*"],
+    "delay": 1000,
+    "ext": "js,json,ejs"
   },
   "keywords": [],
   "author": "",
