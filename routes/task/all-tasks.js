@@ -1,13 +1,8 @@
 const { Router } = require('express');
+const { getAllTasks } = require('../../controllers/task/get-allTasks');
+
 const router = Router();
-const createFileHandler = require('../../utils/fileOperations');
 
-const { readFile } = createFileHandler()
-
-router.get('/', (req, res) => {
-  readFile((tasks) => {    
-    res.render('index', { title: 'Bosh sahifa', tasks });
-  });
-});
+router.get('/', getAllTasks);
 
 module.exports = router;
