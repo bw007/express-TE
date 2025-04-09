@@ -1,18 +1,22 @@
 <%- include('./includes/head.ejs') %>
 
   <div class="todo__body">
-    <% for(const task of tasks) {%>
-      <div class="todo__item todo-item">
-        <h3 class="todo-item__title"> <%= task.name %> </h3>
-        <p class="todo-item__description"> <%= task.description %> </p>
-        <span class="todo-item__status <%= task.status == 0 ? 'primary' : (task.status == 1 ? 'success' : 'warning') %>">
-          <%= task.status == 0 ? 'In Progress' : (task.status == 1 ? 'Completed' : 'Pending') %>
-        </span>
-        <div class="todo-item__actions">
-          <a href="/task/<%= task.id %>/edit" class="todo-item__action todo-item__action--edit">Edit</a>
-          <button data-modal="deleteModal" data-id="<%= task.id %>" data-name="<%= task.name %>" class="todo-item__action todo-item__action--delete modal__open">Delete</button>
+    <% if(tasks.length !== 0){ %>
+      <% for(const task of tasks){ %>
+        <div class="todo__item todo-item">
+          <h3 class="todo-item__title"> <%= task.name %> </h3>
+          <p class="todo-item__description"> <%= task.description %> </p>
+          <span class="todo-item__status <%= task.status == 0 ? 'primary' : (task.status == 1 ? 'success' : 'warning') %>">
+            <%= task.status == 0 ? 'In Progress' : (task.status == 1 ? 'Completed' : 'Pending') %>
+          </span>
+          <div class="todo-item__actions">
+            <a href="/task/<%= task.id %>/edit" class="todo-item__action todo-item__action--edit">Edit</a>
+            <button data-modal="deleteModal" data-id="<%= task.id %>" data-name="<%= task.name %>" class="todo-item__action todo-item__action--delete modal__open">Delete</button>
+          </div>
         </div>
-      </div>
+      <% } %>
+    <% } else { %>
+      <h1 class="todo__title">No tasks available.</h1>
     <% } %>
   </div>
   <a href="/task/new" class="todo__create-button">+</a>
