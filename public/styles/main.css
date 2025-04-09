@@ -70,6 +70,14 @@ button {
 .todo__title {
   color: #007bff;
 }
+.todo__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.5rem;
+  color: #999;
+}
 .todo__item {
   padding: 15px;
   border-radius: 5px;
